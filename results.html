@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="View detailed analysis results with confidence scores, AI probability metrics, and downloadable reports." />
+    <title>Results — ADS with AI</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+</head>
+
+<body>
+
+    <!-- ===== Navigation ===== -->
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="navbar-brand">
+            <div class="navbar-logo">🛡️</div>
+            <span class="navbar-title">ADS with AI</span>
+        </a>
+        <ul class="navbar-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="upload.html">Upload &amp; Detect</a></li>
+            <li><a href="results.html" class="active">Results</a></li>
+        </ul>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">☰</button>
+    </nav>
+
+    <!-- ===== Main Content ===== -->
+    <main class="main-content">
+        <section class="results-section">
+
+            <div class="results-header">
+                <h1 class="results-title">Analysis Results</h1>
+                <p class="results-desc">Detailed breakdown of AI detection and plagiarism analysis.</p>
+            </div>
+
+            <!-- Main Result Card -->
+            <div class="glass-card result-main-card">
+
+                <!-- SVG gradient definitions -->
+                <svg width="0" height="0" style="position:absolute;">
+                    <defs>
+                        <linearGradient id="meterGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#b44aff;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#e0aaff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#8a2be2;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+
+                <div class="result-grid">
+
+                    <!-- Circular Meter -->
+                    <div class="meter-container">
+                        <div class="circular-meter">
+                            <svg viewBox="0 0 220 220">
+                                <circle class="meter-bg" cx="110" cy="110" r="100" />
+                                <circle class="meter-fill" id="meterFill" cx="110" cy="110" r="100" />
+                            </svg>
+                            <div class="meter-center">
+                                <div class="meter-value" id="meterValue">0</div>
+                                <div class="meter-label">AI Score</div>
+                            </div>
+                        </div>
+                        <div id="resultBadge" class="result-badge ai" style="margin-top: 1.5rem;">
+                            ⚠️ AI Generated
+                        </div>
+                    </div>
+
+                    <!-- Result Details -->
+                    <div class="result-details">
+                        <div class="result-item">
+                            <span class="result-item-label">Similarity Score</span>
+                            <span class="result-item-value" id="similarityScore"
+                                style="color: var(--purple-primary);">0%</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-item-label">AI Probability</span>
+                            <span class="result-item-value" id="aiProbability" style="color: #e0aaff;">0%</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-item-label">Detection Type</span>
+                            <span class="result-item-value" id="detectionType"
+                                style="color: var(--text-muted); font-size: 0.9rem;">Document</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-item-label">Confidence Level</span>
+                            <span class="result-item-value" id="confidenceText" style="font-size: 0.9rem;">—</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Confidence Bar -->
+                <div class="confidence-section" style="margin-top: 2.5rem;">
+                    <h3
+                        style="font-family: 'Orbitron', monospace; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-muted);">
+                        CONFIDENCE BREAKDOWN</h3>
+
+                    <div class="confidence-bar-container">
+                        <span style="font-size: 0.8rem; color: var(--text-dim); min-width: 60px;">Low</span>
+                        <div class="confidence-bar-track">
+                            <div class="confidence-bar-fill" id="confidenceBar"></div>
+                        </div>
+                        <span
+                            style="font-size: 0.8rem; color: var(--text-dim); min-width: 60px; text-align: right;">High</span>
+                    </div>
+                    <div style="text-align: center; margin-top: 0.75rem;">
+                        <span class="confidence-label" id="confidenceLabel"
+                            style="color: var(--warning);">Moderate</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Metrics Cards -->
+            <div class="features-grid"
+                style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); margin-bottom: 2rem;">
+                <div class="glass-card" style="text-align: center; padding: 2rem;">
+                    <div class="feature-icon" style="margin: 0 auto 1rem; font-size: 1.5rem;">📊</div>
+                    <div
+                        style="font-family: 'Orbitron', monospace; font-size: 1.8rem; font-weight: 800; color: var(--purple-primary); margin-bottom: 0.5rem;">
+                        <span class="counter" data-target="72">0</span>%
+                    </div>
+                    <div style="font-size: 0.82rem; color: var(--text-muted);">Plagiarism Match</div>
+                </div>
+                <div class="glass-card" style="text-align: center; padding: 2rem;">
+                    <div class="feature-icon" style="margin: 0 auto 1rem; font-size: 1.5rem;">🧠</div>
+                    <div
+                        style="font-family: 'Orbitron', monospace; font-size: 1.8rem; font-weight: 800; color: #e0aaff; margin-bottom: 0.5rem;">
+                        <span class="counter" data-target="85">0</span>%
+                    </div>
+                    <div style="font-size: 0.82rem; color: var(--text-muted);">AI Content Detected</div>
+                </div>
+                <div class="glass-card" style="text-align: center; padding: 2rem;">
+                    <div class="feature-icon" style="margin: 0 auto 1rem; font-size: 1.5rem;">🎯</div>
+                    <div
+                        style="font-family: 'Orbitron', monospace; font-size: 1.8rem; font-weight: 800; color: var(--success); margin-bottom: 0.5rem;">
+                        <span class="counter" data-target="94">0</span>%
+                    </div>
+                    <div style="font-size: 0.82rem; color: var(--text-muted);">Model Confidence</div>
+                </div>
+            </div>
+
+            <!-- Download Section -->
+            <div class="download-section">
+                <button class="btn-glow" style="opacity:1; animation:none;" id="downloadReport">
+                    📥 Download Analysis Report
+                </button>
+                <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 1rem;">Report generated as a PDF
+                    summary (mock demo)</p>
+            </div>
+
+            <!-- Back to Upload -->
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="upload.html" class="btn-outline">
+                    ← Upload Another File
+                </a>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 <span>ADS with AI</span> — AI-Based Plagiarism &amp; Content Authenticity Detection System</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

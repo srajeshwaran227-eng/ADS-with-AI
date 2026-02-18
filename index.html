@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="AI-Based Plagiarism and Multi-Modal Content Authenticity Detection System - Detect AI-generated text, images, videos, and audio using open-source AI models." />
+    <title>ADS with AI</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+</head>
+
+<body>
+
+    <!-- ===== Navigation ===== -->
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="navbar-brand">
+            <div class="navbar-logo">🛡️</div>
+            <span class="navbar-title">ADS with AI</span>
+        </a>
+        <ul class="navbar-links" id="navLinks">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="upload.html">Upload &amp; Detect</a></li>
+            <li><a href="results.html">Results</a></li>
+        </ul>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">☰</button>
+    </nav>
+
+    <!-- ===== Main Content ===== -->
+    <main class="main-content">
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                AI-Powered Detection System
+            </div>
+            <h1 class="hero-title">AI-Based Plagiarism &amp; Multi-Modal Content Authenticity Detection System</h1>
+            <p class="hero-subtitle">
+                This system detects plagiarism and AI-generated text, images, videos, and audio using free open-source
+                AI models. Ensure academic integrity and content authenticity with cutting-edge deep learning.
+            </p>
+            <a href="upload.html" class="btn-glow">
+                🚀 Start Analysis
+            </a>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section" id="features">
+            <div class="section-header">
+                <span class="section-label">Capabilities</span>
+                <h2 class="section-title">Multi-Modal Detection Engine</h2>
+                <p class="section-desc">Our system analyzes content across multiple modalities to ensure authenticity
+                    and originality.</p>
+            </div>
+
+            <div class="features-grid">
+
+                <!-- Document Plagiarism Detection -->
+                <div class="glass-card feature-card reveal">
+                    <div class="feature-icon">📄</div>
+                    <h3>Document Plagiarism Detection</h3>
+                    <p>Advanced text similarity analysis using TF-IDF vectorization and cosine similarity. Compares
+                        documents against a vast corpus to identify potential plagiarism with high accuracy.</p>
+                    <div class="feature-tags">
+                        <span class="feature-tag">TF-IDF</span>
+                        <span class="feature-tag">Cosine Similarity</span>
+                        <span class="feature-tag">NLP</span>
+                    </div>
+                </div>
+
+                <!-- AI Text Detection -->
+                <div class="glass-card feature-card reveal">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI Text Detection</h3>
+                    <p>Leverages Hugging Face transformer models to distinguish between human-written and AI-generated
+                        text. Analyzes writing patterns, perplexity, and burstiness metrics.</p>
+                    <div class="feature-tags">
+                        <span class="feature-tag">Transformers</span>
+                        <span class="feature-tag">Hugging Face</span>
+                        <span class="feature-tag">GPT Detection</span>
+                    </div>
+                </div>
+
+                <!-- AI Image Detection -->
+                <div class="glass-card feature-card reveal">
+                    <div class="feature-icon">🖼️</div>
+                    <h3>AI Image Detection</h3>
+                    <p>Utilizes deep CNN architectures to detect AI-generated or manipulated images. Identifies
+                        artifacts from DALL-E, Midjourney, and Stable Diffusion models.</p>
+                    <div class="feature-tags">
+                        <span class="feature-tag">CNN</span>
+                        <span class="feature-tag">OpenCV</span>
+                        <span class="feature-tag">TensorFlow</span>
+                    </div>
+                </div>
+
+                <!-- AI Video Deepfake Detection -->
+                <div class="glass-card feature-card reveal">
+                    <div class="feature-icon">🎬</div>
+                    <h3>AI Video Deepfake Detection</h3>
+                    <p>Frame-by-frame analysis using computer vision and deep learning to detect deepfake videos.
+                        Extracts and analyzes individual frames for facial manipulation indicators.</p>
+                    <div class="feature-tags">
+                        <span class="feature-tag">Deepfake</span>
+                        <span class="feature-tag">Frame Analysis</span>
+                        <span class="feature-tag">OpenCV</span>
+                    </div>
+                </div>
+
+                <!-- AI Audio Detection -->
+                <div class="glass-card feature-card reveal">
+                    <div class="feature-icon">🎵</div>
+                    <h3>AI Audio Detection</h3>
+                    <p>Spectrogram-based analysis using mel-frequency features and CNN classifiers to detect
+                        AI-synthesized voice clones and audio deepfakes with high precision.</p>
+                    <div class="feature-tags">
+                        <span class="feature-tag">Spectrogram</span>
+                        <span class="feature-tag">Librosa</span>
+                        <span class="feature-tag">Voice Clone</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="section">
+            <div class="stats-row">
+                <div class="glass-card stat-item reveal">
+                    <div class="stat-number" data-target="98.5">0</div>
+                    <div class="stat-label">Detection Accuracy %</div>
+                </div>
+                <div class="glass-card stat-item reveal">
+                    <div class="stat-number" data-target="5">0</div>
+                    <div class="stat-label">Detection Modalities</div>
+                </div>
+                <div class="glass-card stat-item reveal">
+                    <div class="stat-number" data-target="12">0</div>
+                    <div class="stat-label">AI Models Integrated</div>
+                </div>
+                <div class="glass-card stat-item reveal">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">Open Source %</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Workflow</span>
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-desc">Three simple steps to verify content authenticity.</p>
+            </div>
+
+            <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div class="glass-card feature-card reveal" style="text-align:center;">
+                    <div class="feature-icon" style="margin:0 auto 1.5rem;">📤</div>
+                    <h3>1. Upload Content</h3>
+                    <p>Upload your document, image, video, or audio file through our intuitive interface.</p>
+                </div>
+                <div class="glass-card feature-card reveal" style="text-align:center;">
+                    <div class="feature-icon" style="margin:0 auto 1.5rem;">⚙️</div>
+                    <h3>2. AI Analysis</h3>
+                    <p>Our multi-model pipeline processes the content using state-of-the-art neural networks.</p>
+                </div>
+                <div class="glass-card feature-card reveal" style="text-align:center;">
+                    <div class="feature-icon" style="margin:0 auto 1.5rem;">📊</div>
+                    <h3>3. Get Results</h3>
+                    <p>Receive detailed reports with confidence scores, probability metrics, and visual indicators.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section" style="text-align: center; padding-bottom: 8rem;">
+            <div class="glass-card reveal" style="padding: 4rem 2rem; max-width: 700px; margin: 0 auto;">
+                <h2 class="section-title" style="margin-bottom: 1rem;">Ready to Detect?</h2>
+                <p class="section-desc" style="margin-bottom: 2rem;">Upload your content now and let our AI models
+                    analyze it for authenticity.</p>
+                <a href="upload.html" class="btn-glow" style="opacity:1; animation:none;">
+                    🔍 Start Analysis Now
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 <span>ADS with AI</span> — AI-Based Plagiarism &amp; Content Authenticity Detection System</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

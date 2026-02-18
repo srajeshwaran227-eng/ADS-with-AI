@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Upload documents, images, videos, or audio files for AI-powered authenticity and plagiarism detection." />
+    <title>Upload &amp; Detect — ADS with AI</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+</head>
+
+<body>
+
+    <!-- ===== Navigation ===== -->
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="navbar-brand">
+            <div class="navbar-logo">🛡️</div>
+            <span class="navbar-title">ADS with AI</span>
+        </a>
+        <ul class="navbar-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="upload.html" class="active">Upload &amp; Detect</a></li>
+            <li><a href="results.html">Results</a></li>
+        </ul>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">☰</button>
+    </nav>
+
+    <!-- ===== Main Content ===== -->
+    <main class="main-content">
+        <section class="upload-section">
+            <h1 class="upload-page-title">Upload &amp; Detect</h1>
+            <p class="upload-page-desc">Select a detection type and upload your file for AI-powered analysis.</p>
+
+            <!-- Tabs -->
+            <div class="tabs-container" role="tablist">
+                <button class="tab-btn active" data-tab="document" role="tab" aria-selected="true">
+                    📄 Document
+                </button>
+                <button class="tab-btn" data-tab="image" role="tab" aria-selected="false">
+                    🖼️ Image
+                </button>
+                <button class="tab-btn" data-tab="video" role="tab" aria-selected="false">
+                    🎬 Video
+                </button>
+                <button class="tab-btn" data-tab="audio" role="tab" aria-selected="false">
+                    🎵 Audio
+                </button>
+            </div>
+
+            <!-- ==================== TAB 1: DOCUMENT ==================== -->
+            <div class="tab-content active" id="tab-document" role="tabpanel">
+                <div class="glass-card">
+                    <div class="upload-zone" id="dropzone-document" data-accept=".pdf,.docx,.txt">
+                        <span class="upload-icon">📄</span>
+                        <h3>Drag &amp; Drop Your Document Here</h3>
+                        <p>or click to browse files</p>
+                        <div class="formats">
+                            <span class="format-badge">PDF</span>
+                            <span class="format-badge">DOCX</span>
+                            <span class="format-badge">TXT</span>
+                        </div>
+                        <input type="file" hidden accept=".pdf,.docx,.txt" id="file-document" />
+                    </div>
+
+                    <div class="file-info" id="fileinfo-document">
+                        <span class="file-info-icon">📎</span>
+                        <div class="file-info-details">
+                            <div class="file-info-name" id="filename-document"></div>
+                            <div class="file-info-size" id="filesize-document"></div>
+                        </div>
+                        <button class="file-remove" data-type="document" aria-label="Remove file">✕</button>
+                    </div>
+
+                    <!-- Analysis Progress -->
+                    <div class="analysis-progress" id="progress-document">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progressbar-document"></div>
+                        </div>
+                        <div class="progress-text" id="progresstext-document">Initializing analysis...</div>
+                        <div class="progress-steps">
+                            <div class="progress-step" id="step-doc-1">
+                                <span class="progress-step-icon">⏳</span> Extracting text content
+                            </div>
+                            <div class="progress-step" id="step-doc-2">
+                                <span class="progress-step-icon">⏳</span> Running TF-IDF vectorization
+                            </div>
+                            <div class="progress-step" id="step-doc-3">
+                                <span class="progress-step-icon">⏳</span> Computing cosine similarity
+                            </div>
+                            <div class="progress-step" id="step-doc-4">
+                                <span class="progress-step-icon">⏳</span> AI text detection (Transformer)
+                            </div>
+                            <div class="progress-step" id="step-doc-5">
+                                <span class="progress-step-icon">⏳</span> Generating results
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analyze-btn-wrapper">
+                        <button class="btn-glow btn-analyze" id="analyze-document" disabled>
+                            🔍 Analyze Document
+                        </button>
+                    </div>
+
+                    <!-- Reality Report (shown after analysis) -->
+                    <div class="reality-report" id="report-document" style="display:none;">
+                        <div class="report-header">
+                            <span class="report-icon">📊</span>
+                            <h4>Reality Report</h4>
+                        </div>
+                        <div class="report-metrics">
+                            <div class="report-metric">
+                                <span class="report-metric-label">AI Probability</span>
+                                <span class="report-metric-value ai-prob" id="report-ai-document">—</span>
+                            </div>
+                            <div class="report-metric">
+                                <span class="report-metric-label">Reality Percentage</span>
+                                <span class="report-metric-value reality" id="report-reality-document">—</span>
+                            </div>
+                            <div class="report-metric">
+                                <span class="report-metric-label">Confidence</span>
+                                <span class="report-metric-value" id="report-conf-document">—</span>
+                            </div>
+                            <div class="report-metric">
+                                <span class="report-metric-label">Verdict</span>
+                                <span class="report-metric-value verdict" id="report-verdict-document">—</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== TAB 2: IMAGE ==================== -->
+            <div class="tab-content" id="tab-image" role="tabpanel">
+                <div class="glass-card">
+                    <div class="upload-zone" id="dropzone-image" data-accept=".jpg,.jpeg,.png">
+                        <span class="upload-icon">🖼️</span>
+                        <h3>Drag &amp; Drop Your Image Here</h3>
+                        <p>or click to browse files</p>
+                        <div class="formats">
+                            <span class="format-badge">JPG</span>
+                            <span class="format-badge">PNG</span>
+                            <span class="format-badge">JPEG</span>
+                        </div>
+                        <input type="file" hidden accept=".jpg,.jpeg,.png,image/jpeg,image/png" id="file-image" />
+                    </div>
+
+                    <div class="file-info" id="fileinfo-image">
+                        <span class="file-info-icon">🖼️</span>
+                        <div class="file-info-details">
+                            <div class="file-info-name" id="filename-image"></div>
+                            <div class="file-info-size" id="filesize-image"></div>
+                        </div>
+                        <button class="file-remove" data-type="image" aria-label="Remove file">✕</button>
+                    </div>
+
+                    <div class="analysis-progress" id="progress-image">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progressbar-image"></div>
+                        </div>
+                        <div class="progress-text" id="progresstext-image">Initializing analysis...</div>
+                        <div class="progress-steps">
+                            <div class="progress-step" id="step-img-1">
+                                <span class="progress-step-icon">⏳</span> Image preprocessing (OpenCV)
+                            </div>
+                            <div class="progress-step" id="step-img-2">
+                                <span class="progress-step-icon">⏳</span> Feature extraction (CNN)
+                            </div>
+                            <div class="progress-step" id="step-img-3">
+                                <span class="progress-step-icon">⏳</span> AI generation detection
+                            </div>
+                            <div class="progress-step" id="step-img-4">
+                                <span class="progress-step-icon">⏳</span> Confidence scoring
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analyze-btn-wrapper">
+                        <button class="btn-glow btn-analyze" id="analyze-image" disabled>
+                            🔍 Analyze Image
+                        </button>
+                    </div>
+
+                    <!-- Reality Report (shown after analysis) -->
+                    <div class="reality-report" id="report-image" style="display:none;">
+                        <div class="report-header">
+                            <span class="report-icon">📊</span>
+                            <h4>Reality Report</h4>
+                        </div>
+                        <div class="report-metrics">
+                            <div class="report-metric">
+                                <span class="report-metric-label">AI Probability</span>
+                                <span class="report-metric-value ai-prob" id="report-ai-image">—</span>
+                            </div>
+                            <div class="report-metric">
+                                <span class="report-metric-label">Reality Percentage</span>
+                                <span class="report-metric-value reality" id="report-reality-image">—</span>
+                            </div>
+                            <div class="report-metric">
+                                <span class="report-metric-label">Confidence</span>
+                                <span class="report-metric-value" id="report-conf-image">—</span>
+                            </div>
+                            <div class="report-metric">
+                                <span class="report-metric-label">Verdict</span>
+                                <span class="report-metric-value verdict" id="report-verdict-image">—</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== TAB 3: VIDEO ==================== -->
+            <div class="tab-content" id="tab-video" role="tabpanel">
+                <div class="glass-card">
+                    <div class="upload-zone" id="dropzone-video" data-accept=".mp4,.avi,.mov">
+                        <span class="upload-icon">🎬</span>
+                        <h3>Drag &amp; Drop Your Video Here</h3>
+                        <p>or click to browse files</p>
+                        <div class="formats">
+                            <span class="format-badge">MP4</span>
+                            <span class="format-badge">AVI</span>
+                            <span class="format-badge">MOV</span>
+                        </div>
+                        <input type="file" hidden accept=".mp4,.avi,.mov,video/mp4,video/avi,video/quicktime"
+                            id="file-video" />
+                    </div>
+
+                    <div class="file-info" id="fileinfo-video">
+                        <span class="file-info-icon">🎬</span>
+                        <div class="file-info-details">
+                            <div class="file-info-name" id="filename-video"></div>
+                            <div class="file-info-size" id="filesize-video"></div>
+                        </div>
+                        <button class="file-remove" data-type="video" aria-label="Remove file">✕</button>
+                    </div>
+
+                    <!-- Frame analysis visual -->
+                    <div class="analysis-visual" id="visual-video">
+                        <div class="frame-scan"></div>
+                        <div class="wave-bars">
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="analysis-progress" id="progress-video">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progressbar-video"></div>
+                        </div>
+                        <div class="progress-text" id="progresstext-video">Initializing analysis...</div>
+                        <div class="progress-steps">
+                            <div class="progress-step" id="step-vid-1">
+                                <span class="progress-step-icon">⏳</span> Extracting video frames (OpenCV)
+                            </div>
+                            <div class="progress-step" id="step-vid-2">
+                                <span class="progress-step-icon">⏳</span> Face detection &amp; alignment
+                            </div>
+                            <div class="progress-step" id="step-vid-3">
+                                <span class="progress-step-icon">⏳</span> Running CNN on each frame
+                            </div>
+                            <div class="progress-step" id="step-vid-4">
+                                <span class="progress-step-icon">⏳</span> Computing average prediction score
+                            </div>
+                            <div class="progress-step" id="step-vid-5">
+                                <span class="progress-step-icon">⏳</span> Generating deepfake report
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analyze-btn-wrapper">
+                        <button class="btn-glow btn-analyze" id="analyze-video" disabled>
+                            🔍 Analyze Video
+                        </button>
+                    </div>
+
+                    <!-- Reality Report (shown after analysis) -->
+                    <div class="reality-report" id="report-video" style="display:none;">
+                        <div class="report-header">
+                            <span class="report-icon">📊</span>
+                            <h4>Reality Report</h4>
+                        </div>
+                        <div class="report-metrics">
+                            <div class="report-metric">
+                                <span class="report-metric-label">Deepfake Probability</span>
+                                <span class="report-metric-value ai-prob" id="report-ai-video">—</span>
+                            </div>
+                            <div class="report-metric">
+                                <span class="report-metric-label">Reality Percentage</span>
+                                <span class="report-metric-value reality" id="report-reality-video">—</span>
+                            </div>
+                            <div class="report-metric">
+                                <span class="report-metric-label">Confidence</span>
+                                <span class="report-metric-value" id="report-conf-video">—</span>
+                            </div>
+                            <div class="report-metric">
+                                <span class="report-metric-label">Verdict</span>
+                                <span class="report-metric-value verdict" id="report-verdict-video">—</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== TAB 4: AUDIO ==================== -->
+            <div class="tab-content" id="tab-audio" role="tabpanel">
+                <div class="glass-card">
+                    <div class="upload-zone" id="dropzone-audio" data-accept=".mp3,.wav">
+                        <span class="upload-icon">🎵</span>
+                        <h3>Drag &amp; Drop Your Audio Here</h3>
+                        <p>or click to browse files</p>
+                        <div class="formats">
+                            <span class="format-badge">MP3</span>
+                            <span class="format-badge">WAV</span>
+                        </div>
+                        <input type="file" hidden accept=".mp3,.wav,audio/mpeg,audio/wav" id="file-audio" />
+                    </div>
+
+                    <div class="file-info" id="fileinfo-audio">
+                        <span class="file-info-icon">🎵</span>
+                        <div class="file-info-details">
+                            <div class="file-info-name" id="filename-audio"></div>
+                            <div class="file-info-size" id="filesize-audio"></div>
+                        </div>
+                        <button class="file-remove" data-type="audio" aria-label="Remove file">✕</button>
+                    </div>
+
+                    <!-- Spectrogram visual -->
+                    <div class="analysis-visual" id="visual-audio">
+                        <div class="wave-bars">
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="analysis-progress" id="progress-audio">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progressbar-audio"></div>
+                        </div>
+                        <div class="progress-text" id="progresstext-audio">Initializing analysis...</div>
+                        <div class="progress-steps">
+                            <div class="progress-step" id="step-aud-1">
+                                <span class="progress-step-icon">⏳</span> Loading audio waveform
+                            </div>
+                            <div class="progress-step" id="step-aud-2">
+                                <span class="progress-step-icon">⏳</span> Generating mel spectrogram (Librosa)
+                            </div>
+                            <div class="progress-step" id="step-aud-3">
+                                <span class="progress-step-icon">⏳</span> Running CNN classifier
+                            </div>
+                            <div class="progress-step" id="step-aud-4">
+                                <span class="progress-step-icon">⏳</span> AI voice probability scoring
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analyze-btn-wrapper">
+                        <button class="btn-glow btn-analyze" id="analyze-audio" disabled>
+                            🔍 Analyze Audio
+                        </button>
+                    </div>
+
+                    <!-- Reality Report (shown after analysis) -->
+                    <div class="reality-report" id="report-audio" style="display:none;">
+                        <div class="report-header">
+                            <span class="report-icon">📊</span>
+                            <h4>Reality Report</h4>
+                        </div>
+                        <div class="report-metrics">
+                            <div class="report-metric">
+                                <span class="report-metric-label">AI Voice Probability</span>
+                                <span class="report-metric-value ai-prob" id="report-ai-audio">—</span>
+                            </div>
+                            <div class="report-metric">
+                                <span class="report-metric-label">Reality Percentage</span>
+                                <span class="report-metric-value reality" id="report-reality-audio">—</span>
+                            </div>
+                            <div class="report-metric">
+                                <span class="report-metric-label">Confidence</span>
+                                <span class="report-metric-value" id="report-conf-audio">—</span>
+                            </div>
+                            <div class="report-metric">
+                                <span class="report-metric-label">Verdict</span>
+                                <span class="report-metric-value verdict" id="report-verdict-audio">—</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 <span>ADS with AI</span> — AI-Based Plagiarism &amp; Content Authenticity Detection System</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
