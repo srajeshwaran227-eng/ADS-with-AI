@@ -37,7 +37,7 @@ def create_app(config_class=Config):
     def health():
         return jsonify({
             "status": "ok",
-            "service": "AuthentiGuard AI Backend",
+            "service": "ADS with AI Backend",
             "demo_mode": app.config["DEMO_MODE"],
         })
 
